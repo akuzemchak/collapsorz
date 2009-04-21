@@ -1,10 +1,10 @@
 /* -------------------------------------------------- *
- * Collapsorz 1.0
- * Updated: 11/10/08
+ * Collapsorz 1.1
+ * Updated: 04/21/09
  * -------------------------------------------------- *
  * Author: Aaron Kuzemchak
  * URL: http://aaronkuzemchak.com/
- * Copyright: 2008 Aaron Kuzemchak
+ * Copyright: 2008-2009 Aaron Kuzemchak
  * License: MIT License
 ** -------------------------------------------------- */
 
@@ -17,7 +17,8 @@
 			showText: "Show", // text for the expand link
 			hideText: "Hide", // text for the collapse link
 			linkLocation: "after", // use "after" or "before" to determine where link displays
-			defaultState: "collapsed" // use "collapsed" or "expanded" to show or hide items by default
+			defaultState: "collapsed", // use "collapsed" or "expanded" to show or hide items by default
+			wrapLink: null // specify HTML code to wrap around the link
 		};
 		var options = $.extend(defaults, options);
 		
@@ -40,6 +41,9 @@
 				}
 				else {
 					$obj.after($toggler);
+				}
+				if(options.wrapLink) {
+					$toggler.wrap(options.wrapLink);
 				}
 				
 				// set data, link class, and link text
